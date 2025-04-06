@@ -1,0 +1,54 @@
+@model AMRS.Models.AirportsModel
+
+
+@{
+    ViewBag.Title = "Update Airport";
+}
+
+<script type="text/javascript">
+    $(function () 
+    {
+        var msg = '@ViewData["result"]';
+        if (msg == '1')
+        {
+            alert("Airport Inserted Successfully");            
+        }
+        else
+        {
+            alert("Failed to Inserted Airport!!!");   
+        }
+    });
+</script>
+
+<h2>Update Airport</h2>
+
+@using (Html.BeginForm("Update", "Airport", FormMethod.Post))
+{ 
+    <table style="width:100%; border: solid 2px #000" class="able table-responsive table-bordered table-striped">
+                            <tr align="center">
+                                <td>
+                                    <label for="Name">Airport Name</label>
+                                    @Html.TextBoxFor(model => model.portName)
+                                </td>
+                                <td>
+                                    <label for="Country">Airport Country</label>
+                                    @Html.TextBoxFor(model => model.portCountry)
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                    <label for="City">Airport City</label>
+                                    @Html.TextBoxFor(model => model.portCity)
+                                </td>
+                                <td>
+                                    <label for="Zip">Airport Zip code</label>
+                                    @Html.TextBoxFor(model => model.portZip)
+                                </td>
+                            </tr>
+                            <tr>
+                                <input type="hidden" name="portId" value="@Model.portId" />
+                                <td colspan="2" align="center"><input type="submit" value="Update Airport" class="button-primary"/></td>
+                            </tr>
+        </table>  
+}
+
